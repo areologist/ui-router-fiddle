@@ -1,0 +1,15 @@
+{
+	"import": false,
+    "duplicate-background-images": false,
+    "box-sizing": false,
+    "font-sizes": false,
+    "box-model": false,
+    "compatible-vendor-prefixes": false,
+    "outline-none": false,
+    "unqualified-attributes": false,
+    
+    "adjoining-classes": false,
+    "important": true,
+    "overqualified-elements": true,
+    "text-indent": true
+}

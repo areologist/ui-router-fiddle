@@ -1,0 +1,32 @@
+// jshint.com/docs/options
+{
+    "curly": true,
+    "camelcase": true,
+    "eqeqeq": true,
+    "forin": true,
+    "freeze": true,
+    "immed": true,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "strict": true,
+    "globalstrict": false,
+    "sub": false,
+    "undef": true,
+    "unused": false,
+    "boss": false,
+    "eqnull": true,
+    "quotmark": true,
+
+    "maxparams": 3,
+    "maxdepth": 3,
+    "maxstatements": 16,
+    "maxcomplexity": 10,
+
+    "browser": true,
+
+    "globals": {
+      "console": true,
+      "angular": true
+    }
+}
