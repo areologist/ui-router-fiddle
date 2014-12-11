@@ -38,9 +38,15 @@ module.exports = function (grunt) {
             src: [
               './vendor/angular/angular.js',
               './vendor/angular-ui-router/release/angular-ui-router.js',
+              './vendor/ui-router-extras/release/ct-ui-router-extras.js',
+              './vendor/localforage/dist/localforage.js',
+              './vendor/angular-localforage/dist/angular-localForage.js',
               './vendor/angular-animate/angular-animate.js',
               './vendor/hammerjs/hammer.js',
-              './vendor/angular-gestures/gestures.js'
+              './vendor/angular-gestures/gestures.js',
+              './vendor/angular-bootstrap/ui-bootstrap.js',
+              './vendor/angular-bootstrap/ui-bootstrap-tpls.js',
+              './vendor/ngDialog/js/ngDialog.js'
             ],
             dest: './build/js/vendor-bundle.js'
           }
@@ -103,7 +109,7 @@ module.exports = function (grunt) {
               {
                 expand: true,
                 flatten: true,
-                src: ['./app/src/partials/*.html'],
+                src: ['./app/partials/*.html'],
                 dest: './build/partials/'
               },
               {
@@ -121,7 +127,9 @@ module.exports = function (grunt) {
                 flatten: true,
                 src: [
                     './vendor/bootstrap/dist/css/bootstrap.min.css',
-                    './vendor/bootstrap/dist/css/bootstrap-theme.min.css'
+                    './vendor/bootstrap/dist/css/bootstrap-theme.min.css',
+                    './vendor/ngDialog/css/ngDialog.min.css',
+                    './vendor/ngDialog/css/ngDialog-theme-default.min.css'
                 ],
                 dest: './build/css'
               },
@@ -129,9 +137,34 @@ module.exports = function (grunt) {
                 expand: true,
                 flatten: true,
                 src: ['./vendor/bootstrap/dist/fonts/*.*'],
-                dest: './build/fonts/'
+                //src: ['./vendor/semantic-ui/dist/themes/default/assets/**/*.*'],
+                dest: './build/assets/'
               }
             ]
+          }
+        },
+
+        uncss: {
+          dist: {
+            files: {
+              './build/css/tidy.css': ['./build/index.html', './build/partials/**/*.html']
+            }
+          }
+        },
+
+        processhtml: {
+          dist: {
+            files: {
+              'build/index.html': ['build/index.html']
+            }
+          }
+        },
+
+        cssmin: {
+          combine: {
+            files: {
+              './build/css/tidy.min.css': ['./build/css/tidy.css']
+            }
           }
         },
 
@@ -158,7 +191,10 @@ module.exports = function (grunt) {
               'uglify:app',
               'less',
               'copy:app',
-              'csslint:lax'
+              'csslint:lax',
+              'uncss',
+              'processhtml',
+              'cssmin'
             ],
             options: {
               interrupt: true
@@ -171,13 +207,16 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-csslint');
-    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-uncss');
+    grunt.loadNpmTasks('grunt-processhtml');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -192,6 +231,9 @@ module.exports = function (grunt) {
         'less',
         'copy',
         'csslint:lax',
+        'uncss',
+        'processhtml',
+        'cssmin',
         'connect',
         'watch'
     ]);

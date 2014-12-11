@@ -1,4 +1,4 @@
 ui-router-fiddle
 ======================
 
-Testing the waters with ui-router.
+Fiddling with ui-router.
