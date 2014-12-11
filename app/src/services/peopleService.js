@@ -15,10 +15,10 @@
         function getPeople () {
 
             // get from localForage
-            return getPeopleStorage();
+            //return getPeopleStorage();
 
             // get via XHR
-            //return getPeopleXHR();
+            return getPeopleXHR();
         }
 
         function getPeopleXHR () {
