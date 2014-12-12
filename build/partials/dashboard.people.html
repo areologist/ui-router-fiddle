@@ -1,15 +1,12 @@
 
   <div class="row people">
-    <a ng-click="people.openPersonModal(person.guid)" ng-repeat="person in ::people.people">
+    <a ng-click="people.openPersonModal(person.guid)" ng-repeat="person in ::people.people | limitTo: 50">
       <div class="col-xs-6 col-sm-3 person">
         <img ng-src="{{ ::person.picture }}" class="img-responsive" alt="Picture of {{ ::person.name }}">
         <h4>{{ ::person.name }}</h4>
         <span class="text-muted">{{ ::person.email }}</span>
       </div>
     </a>
-
-    <div>
-      <div ng-show="people.selected">Selection from a modal: item {{ people.selected.value }} for person.guid: {{ people.selected.guid }}</div>
-    </div>
-
   </div>
+
+  <alert type="info" ng-show="people.selected"><strong>Selected value</strong>: {{ people.selected.value }}, <strong>person.guid</strong>: {{ people.selected.guid }}</alert>
