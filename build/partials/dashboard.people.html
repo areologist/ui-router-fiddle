@@ -1,8 +1,15 @@
 
-  <div class="row placeholders">
-    <div class="col-xs-6 col-sm-3 placeholder"  ng-repeat="person in people.people">
-      <img ng-src="{{ ::person.picture }}" class="img-responsive" alt="Picture of {{ ::person.name }}">
-      <h4>{{ ::person.name }}</h4>
-      <span class="text-muted">{{ ::person.email }}</span>
+  <div class="row people">
+    <a ng-click="people.openPersonModal(person.guid)" ng-repeat="person in ::people.people">
+      <div class="col-xs-6 col-sm-3 person">
+        <img ng-src="{{ ::person.picture }}" class="img-responsive" alt="Picture of {{ ::person.name }}">
+        <h4>{{ ::person.name }}</h4>
+        <span class="text-muted">{{ ::person.email }}</span>
+      </div>
+    </a>
+
+    <div>
+      <div ng-show="people.selected">Selection from a modal: item {{ people.selected.value }} for person.guid: {{ people.selected.guid }}</div>
     </div>
+
   </div>

@@ -86,16 +86,25 @@ body {
 
 
 /*
- * Placeholder dashboard ideas
+ * People list
  */
 h4 {
   margin-bottom: 0;
 }
-.placeholders {
+.people {
   margin-bottom: 30px;
   text-align: center;
+  a {
+    cursor: pointer;
+    &:hover, &:active {
+      .person {
+        background-color: #f0f0f0;
+      }
+    }
+  }
 }
-.placeholder {
+.person {
+  .transition(300ms);
   margin-bottom: 20px;
   img {
     display: inline-block;
@@ -107,9 +116,6 @@ h4 {
 /*
  * Loader div
  */
-@loadercolor: #0096db;//#67c320;//#337ab7;
-@lightcolor: fadeout(@loadercolor, 80%);
-
 .loader-container {
   position: relative;
   overflow: hidden;
@@ -153,4 +159,13 @@ h4 {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+
+/*
+ * slightly distressed that this is necessary
+ */
+.modal-backdrop {
+    bottom: 0;
+    position: fixed;
 }

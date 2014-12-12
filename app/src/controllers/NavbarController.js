@@ -3,15 +3,33 @@
     "use strict";
 
     angular.module("myApp")
-        .controller("NavbarController", function (ngDialog) {
+        .controller("NavbarController", function (modalService, serviceConfig) {
 
-            this.openModal = function () {
+            // former home of redacted ngDialog experiment
 
-                ngDialog.open({
-                    template: "<h1>Awesome</h1><p>This is a modal dialog of some sort.</p>",
-                    className: "ngdialog-theme-default",
-                    plain: true
-                });
+            var that = this;
+
+            this.storage = false;
+
+            this.updateStorage = function () {
+
+                serviceConfig.useLocalForage = that.storage;
+            };
+
+            this.storageButtonClass = function () {
+                return that.storage ? "btn-success" : "btn-default";
+            };
+
+            this.openAwesome = function () {
+
+            	modalService.openAwesome("md")
+            		.then(function (result) {
+
+                        console.log("We're done; clicked okay. ");
+                    }, function () {
+
+                        console.log("Welp, dialog was dismissed.");
+                    });
             };
         });
 }());

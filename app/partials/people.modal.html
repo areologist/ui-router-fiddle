@@ -1,0 +1,31 @@
+
+  <div class="modal-header">
+    <h3 class="modal-title">People Modal</h3>
+  </div>
+  <div class="modal-body">
+
+    <div class="well container-fluid">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Selectables</label>
+        <div class="col-sm-10">
+          <select ng-model="peopleForm.selected.item" class="form-control">
+            <option ng-repeat="item in peopleForm.items" ng-selected="peopleForm.selected.item === item" value="{{item}}">{{ item }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Selected: <b>{{ peopleForm.selected.item }}</b>
+      </div>
+      <div class="panel-footer">
+        Current guid: <b>{{ peopleForm.id }}</b>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="peopleForm.ok()">OK</button>
+    <button class="btn btn-warning" ng-click="peopleForm.cancel()">Cancel</button>
+  </div>

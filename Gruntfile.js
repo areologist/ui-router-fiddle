@@ -45,8 +45,7 @@ module.exports = function (grunt) {
               './vendor/hammerjs/hammer.js',
               './vendor/angular-gestures/gestures.js',
               './vendor/angular-bootstrap/ui-bootstrap.js',
-              './vendor/angular-bootstrap/ui-bootstrap-tpls.js',
-              './vendor/ngDialog/js/ngDialog.js'
+              './vendor/angular-bootstrap/ui-bootstrap-tpls.js'
             ],
             dest: './build/js/vendor-bundle.js'
           }
@@ -127,9 +126,7 @@ module.exports = function (grunt) {
                 flatten: true,
                 src: [
                     './vendor/bootstrap/dist/css/bootstrap.min.css',
-                    './vendor/bootstrap/dist/css/bootstrap-theme.min.css',
-                    './vendor/ngDialog/css/ngDialog.min.css',
-                    './vendor/ngDialog/css/ngDialog-theme-default.min.css'
+                    './vendor/bootstrap/dist/css/bootstrap-theme.min.css'
                 ],
                 dest: './build/css'
               },
@@ -137,7 +134,6 @@ module.exports = function (grunt) {
                 expand: true,
                 flatten: true,
                 src: ['./vendor/bootstrap/dist/fonts/*.*'],
-                //src: ['./vendor/semantic-ui/dist/themes/default/assets/**/*.*'],
                 dest: './build/assets/'
               }
             ]

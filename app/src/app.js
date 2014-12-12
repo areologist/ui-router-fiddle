@@ -6,28 +6,24 @@
         "ngAnimate",
         "ui.router",
         "LocalForageModule",
-        "ui.bootstrap",
-        "ngDialog"
+        "ui.bootstrap"
     ]);
+
+    app.value("useLocalForage", false);
 
     app.config( function ($stateProvider, $urlRouterProvider) {
       
       $urlRouterProvider.otherwise("/dashboard");
       
       $stateProvider
+
         /**
          * Dashboard router states
          */
         .state("dashboard", {
             url: "/dashboard",
             templateUrl: "partials/dashboard.html",
-            controller: function ($state) {
-
-                this.activeClass = function (name) {
-
-                    return (name === $state.current.name) ? "active" : "";
-                };
-            },
+            controller: "DashboardController",
             controllerAs: "dashboard"
         })
         .state("dashboard.people", {

@@ -1,0 +1,28 @@
+// mixins
+
+.transition(@expr: all 80ms ease-out) {
+	-webkit-transition: @expr;
+	-moz-transition: @expr;
+	-o-transition: @expr;
+	transition: @expr;
+}
+.transition-all(@time: 80ms) {
+	-webkit-transition: all @time ease-out;
+	-moz-transition: all @time ease-out;
+	-o-transition: all @time ease-out;
+	transition: all @time ease-out;
+}
+.border-box() {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.no-select() {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.border-radius(@radius: 4px) {
+	border-radius: @radius;
+}

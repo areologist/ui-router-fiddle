@@ -7,11 +7,9 @@
   <title>ui-router test</title>
 
   <!-- build:css css/tidy.min.css -->
+  <!-- /build -->
   <link href="css/bootstrap.min.css" rel="stylesheet" />
   <link href="css/app-bundle.min.css" rel="stylesheet" />
-  <!-- /build -->
-  <link href="css/ngDialog.min.css" rel="stylesheet" />
-  <link href="css/ngDialog-theme-default.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -40,7 +38,9 @@
           <li><a href="#" ui-sref="profile">Profile</a></li>
         </ul>
 
-        <button type="button" class="btn btn-primary navbar-btn" ng-click="navbar.openModal()">Awesome</button>
+        <button type="button" class="btn btn-primary navbar-btn" ng-click="navbar.openAwesome()">Awesome</button>
+        <button type="button" class="btn navbar-btn" ng-class="navbar.storageButtonClass()" ng-model="navbar.storage" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" ng-change="navbar.updateStorage()">Storage {{ navbar.storage ? 'On' : 'Off' }}</button>
+
       </div>
     </div>
   </nav>
